@@ -33,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $post = new Post();
+        return view('admin.posts.create' ,compact('post'));
     }
 
     /**
@@ -45,6 +46,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        request()->validate([
+            'title' => 'required|unique:posts|max:120',
+            'author' => 'required|max:120',
+            'content' => 'required|min:10',
+            'url' => 'required|min:10'
+        ],
+        [
+            'required'=>'Devi compilare correttaemnte :attribute',
+            'title.required' => 'non è possibile inserire un post senza titolo',
+            'author.max' => 'non è possibile inserire un autore con più di 160 caratteri',
+            'content.min' => 'il post deve essere lungo almeno 10 caratteri',
+        ]
+    );
+
         $data = request()->all();
         $data['date']=Carbon::now();
         $post= new Post();
