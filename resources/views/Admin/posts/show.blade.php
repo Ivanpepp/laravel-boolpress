@@ -11,6 +11,7 @@
                 <p class="card-text">Scritto da: {{$post->author}}</p>
                 <p class="card-text">il: {{$post->date}}</p>
                 <a href="{{route('admin.posts.index')}}" class="btn btn-danger">Torna alla lista</a>
+                <a href="{{route('admin.posts.edit', $post)}}" class="btn btn-secondary">Modifica</a>
             </div>
           </div>
     </div>

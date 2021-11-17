@@ -2,9 +2,14 @@
 
 @section('content')
     <div class="container">
+        @if (session('deleted'))
+            <div class="alert alert-success" role="alert">
+                {{session('alert-message')}}
+            </div>
+        @endif
         <header>
             <h1>Lista dei Post</h1>
-            <a class="btn btn-primary my-5" href="">Crea nuovo post</a>
+            <a class="btn btn-primary my-5" href="{{route('admin.posts.create')}}">Crea nuovo post</a>
         </header>
         <table class="table">
             <thead>
@@ -18,6 +23,14 @@
                         <td><a href="{{route('admin.posts.show', $post)}}">{{$post->title}}</a></td>
                         <td>{{$post->author}}</td>
                         <td>{{$post->date}}</td>
+                        <td><a href="{{route('admin.posts.edit', $post)}}" class="btn btn-secondary">Modifica</a></td>
+                        <td>
+                            <form action="{{route('admin.posts.destroy',$post)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Elimina</button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>
