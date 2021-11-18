@@ -14,6 +14,15 @@
                     <input class="form-control" type="text" placeholder="Inserisci il titolo" id="title" name="title" value="{{$post->title}}">
                 </div>
                 <div class="form-group">
+                    <label for="category_id">Categoria</label>
+                    <select name="category_id" id="category_id">
+                        <option< value="">Senza Categoria</option>
+                        @foreach ($categories as $category)
+                            <option @if (old('category_id')==$category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="author">Autore</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'autore" id="author" name="author"  value="{{$post->author}}">
                 </div>
