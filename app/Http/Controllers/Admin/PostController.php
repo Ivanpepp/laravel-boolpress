@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\View\ViewServiceProvider;
 
 class PostController extends Controller
@@ -34,7 +35,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('admin.posts.create' ,compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.create' ,compact('post','categories'));
     }
 
     /**
@@ -50,7 +52,8 @@ class PostController extends Controller
             'title' => 'required|unique:posts|max:120',
             'author' => 'required|max:120',
             'content' => 'required|min:10',
-            'url' => 'required|min:10'
+            'url' => 'required|min:10',
+            'category_id' => 'nullable',
         ],
         [
             'required'=>'Devi compilare correttaemnte :attribute',

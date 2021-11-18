@@ -23,6 +23,15 @@
                     <input class="form-control" type="text" placeholder="Inserisci il titolo" id="title" name="title" value="{{old('title', $post->title)}}">
                 </div>
                 <div class="form-group">
+                    <label for="category_id">Categoria</label>
+                    <select name="category_id" id="category_id">
+                        <option value="">Senza Categoria</option>
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="author">Autore</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'autore" id="author" name="author" value="{{old('author', $post->author)}}">
                 </div>
@@ -34,6 +43,7 @@
                     <label for="url">Url</label>
                     <textarea class="form-control" type="text" placeholder="Inserisci l'Url" id="url" name="url" >{{old('url',$post->url)}}</textarea>
                 </div>
+                
                 <button class="btn btn-primary" type="submit">Crea</button>
             </form>
         </section>

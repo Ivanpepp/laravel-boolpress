@@ -19,13 +19,14 @@ class CategoriesTableSeeder extends Seeder
     {
         //
          $categoryNames = ['HTML','PHP','JS','MySQL','LARAVEL','VueJS'];
-         foreach($categoryNames as $name){
-            $category = new Category();
-            $category->name = $name;
+         
+            foreach($categoryNames as $name){
+                $category = new Category();
+                $category->name = $name;
 
-            $category->slug = Str::slug($name,'-');
+                $category->slug = Str::slug($name,'-');
 
-            $category->save();
-         }
+                $category->save();
+            }
     }
 }
