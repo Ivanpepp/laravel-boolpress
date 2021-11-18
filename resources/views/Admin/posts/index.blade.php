@@ -14,6 +14,7 @@
         <table class="table">
             <thead>
                 <th class="col">Titolo</th>
+                <th class="col">Categoria</th>
                 <th class="col">Di</th>
                 <th class="col">Scritto il</th>
             </thead>
@@ -21,6 +22,7 @@
                 @forelse ($posts as $post)
                     <tr>
                         <td><a href="{{route('admin.posts.show', $post)}}">{{$post->title}}</a></td>
+                        <td>@if ($post->category) {{$post->category->name}} @else Nessuna categoria assegnata @endif</td>
                         <td>{{$post->author}}</td>
                         <td>{{$post->date}}</td>
                         <td><a href="{{route('admin.posts.edit', $post)}}" class="btn btn-secondary">Modifica</a></td>

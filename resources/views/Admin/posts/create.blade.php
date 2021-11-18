@@ -25,9 +25,9 @@
                 <div class="form-group">
                     <label for="category_id">Categoria</label>
                     <select name="category_id" id="category_id">
-                        <option value="">Senza Categoria</option>
+                        <option< value="">Senza Categoria</option>
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option @if (old('category_id')==$category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>

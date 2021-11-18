@@ -9,6 +9,6 @@ class Category extends Model
 {
     //
     public function postst(){
-        return $this->hasMany('app\Models\Post');
+        return $this->hasMany('App\Models\Post');
     }
 }
