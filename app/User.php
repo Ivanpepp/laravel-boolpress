@@ -44,5 +44,8 @@ class User extends Authenticatable
     // è al stessa cosa ma chiamandolo soltanto info 
     public function info(){
         return $this-> hasOne('App\Models\UserInfo', 'user_id');
-    }   
+    }  
+    /* public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }  */
 }
