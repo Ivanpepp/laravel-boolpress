@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+  /*   public function userInfo(){
+        return $this-> hasOne('App\Models\UserInfo');
+    } */
+
+    // è al stessa cosa ma chiamandolo soltanto info 
+    public function info(){
+        return $this-> hasOne('App\Models\UserInfo', 'user_id');
+    }   
 }
