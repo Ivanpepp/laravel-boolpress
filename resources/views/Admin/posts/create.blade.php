@@ -31,6 +31,15 @@
                         @endforeach
                     </select>
                 </div>
+               <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <legend class="h5 mb-5">Tags</legend>
+                        @foreach ($tags as $tag)
+                            <input class="form-check-input mt-5" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" name="tags[]" >
+                            <label class="form-check-label mx-2 pt-5" for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                        @endforeach       
+                    </div>
+               </div>
                 <div class="form-group">
                     <label for="author">Autore</label>
                     <input class="form-control" type="text" placeholder="Inserisci l'autore" id="author" name="author" value="{{old('author', $post->author)}}">

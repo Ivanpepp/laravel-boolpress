@@ -5,6 +5,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\User;
 
 use Faker\Generator as Faker;
@@ -21,6 +22,7 @@ class PostsTableSeeder extends Seeder
     {
 
         $category_ids = Category::pluck('id')->toArray();
+       /*  $tag_ids = Tag::pluck('id')->toArray(); */
         $user_ids = User::pluck('id')->toArray();
         //
         for($i=0; $i<50; $i++){
@@ -38,6 +40,7 @@ class PostsTableSeeder extends Seeder
             $newPost->slug= Str::slug($newPost->title, '-');
             $newPost->save();
 
+           /*  $newPost->tags()->attach($) */
         }
     }
 }

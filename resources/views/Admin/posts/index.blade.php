@@ -15,6 +15,7 @@
             <thead>
                 <th class="col">Titolo</th>
                 <th class="col">Categoria</th>
+                <th class="col">Tags</th>
                 <th class="col">Di</th>
                 <th class="col">Scritto il</th>
             </thead>
@@ -23,6 +24,15 @@
                     <tr>
                         <td><a href="{{route('admin.posts.show', $post)}}">{{$post->title}}</a></td>
                         <td>@if ($post->category) {{$post->category->name}} @else Nessuna categoria assegnata @endif</td>
+                        <td>
+                            @forelse ($post->tags as $tag)
+                                
+                                    <span class="badge badge-pill" style="background-color: {{$tag->color}}">{{$tag->name}}</span>
+                                
+                            @empty
+                                nessun tag
+                            @endforelse
+                        </td>
                         <td>{{$post->author}}</td>
                         <td>{{$post->date}}</td>
                         <td><a href="{{route('admin.posts.edit', $post)}}" class="btn btn-secondary">Modifica</a></td>
