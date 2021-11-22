@@ -24,7 +24,13 @@
                         <td><a href="{{route('admin.users.show', $user)}}">{{$user->id}}</a></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td></td>
+                        <td>
+                            @forelse ($user->roles as $role)
+                                <span class="badge badge-pill text-white"  style="background-color: {{$role->color}}">{{$role->name}}</span>
+                                @empty
+                                Nessun ruolo assegnato
+                            @endforelse
+                        </td>
                         <td><a href="{{route('admin.users.edit', $user)}}" class="btn btn-secondary">Modifica</a></td>
                         <td>
                             <form action="{{route('admin.users.destroy',$user)}}" method="user">

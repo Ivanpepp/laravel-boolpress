@@ -19,7 +19,7 @@ class RoleUserTableSeeder extends Seeder
 
         foreach($users as $user)
         {
-            $user->roles()->attach(Arr::random($role_ids)); 
+            $user->roles()->sync(Arr::random($role_ids)); 
         }
 
     }
