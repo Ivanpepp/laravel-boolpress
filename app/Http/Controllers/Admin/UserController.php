@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users = User::all();
+        return view('admin.users.index',compact('users'));
     }
 
     /**
@@ -25,6 +28,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('admin.users.create');
     }
 
     /**
@@ -35,7 +39,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //redirect
     }
 
     /**
@@ -44,9 +48,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //
+        return view('admin.users.show',compact('user'));
     }
 
     /**
@@ -58,6 +63,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        return view('admin.users.edit');
     }
 
     /**
@@ -69,7 +75,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //redirect
     }
 
     /**
@@ -80,6 +86,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //redirect
     }
 }

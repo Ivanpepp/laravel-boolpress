@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
-use App\Models\Post;
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,6 +27,7 @@ Route::middleware('auth')
 ->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('posts', 'PostController');
+    Route::resource('users', 'UserController');
 });
 
 
