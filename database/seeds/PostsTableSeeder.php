@@ -25,7 +25,7 @@ class PostsTableSeeder extends Seeder
        /*  $tag_ids = Tag::pluck('id')->toArray(); */
         $user_ids = User::pluck('id')->toArray();
         //
-        for($i=0; $i<50; $i++){
+        for($i=0; $i<100; $i++){
             $newPost = new Post();
 
             $newPost->title = $faker->words(5, true);

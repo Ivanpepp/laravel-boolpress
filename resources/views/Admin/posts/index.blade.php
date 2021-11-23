@@ -51,5 +51,8 @@
                 @endforelse
             </tbody>
         </table>
+        <footer>
+             {{$posts->links()}}
+        </footer>
     </div>
 @endsection
