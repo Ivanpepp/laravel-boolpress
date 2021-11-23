@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use App\Models\Post;
@@ -47,11 +48,13 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         //
         request()->validate([
-            'title' => 'required|unique:posts|max:120',
+            'title' => ['required','string','max:120',
+                        Rule::unique('posts')
+                        ->ignore($post->id)],
             'author' => 'required|max:120',
             'content' => 'required|min:10',
             'url' => 'required|min:10',
@@ -118,7 +121,9 @@ class PostController extends Controller
     {
         //
         request()->validate([
-            'title' => 'required|unique:posts|max:120',
+            'title' => ['required','string','max:120',
+                        Rule::unique('posts')
+                        ->ignore($post->id)],
             'author' => 'required|max:120',
             'content' => 'required|min:10',
             'url' => 'required|min:10',
