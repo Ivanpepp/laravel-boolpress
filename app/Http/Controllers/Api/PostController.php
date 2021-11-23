@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        $data = Post::paginate(10);
+        $data = Post::orderBy('date', 'desc')->paginate(10);
 
 
         return response()->json($data);
