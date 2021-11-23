@@ -22,7 +22,7 @@ class PostsTableSeeder extends Seeder
     {
 
         $category_ids = Category::pluck('id')->toArray();
-       /*  $tag_ids = Tag::pluck('id')->toArray(); */
+        /* $tag_ids = Tag::pluck('id')->toArray(); */
         $user_ids = User::pluck('id')->toArray();
         //
         for($i=0; $i<100; $i++){
@@ -35,12 +35,12 @@ class PostsTableSeeder extends Seeder
             $newPost->date = $faker->dateTime();
 
             $newPost->category_id = Arr::random($category_ids);
-
+          
 
             $newPost->slug= Str::slug($newPost->title, '-');
             $newPost->save();
 
-           /*  $newPost->tags()->attach($) */
+            
         }
     }
 }

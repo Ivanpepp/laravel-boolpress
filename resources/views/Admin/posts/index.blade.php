@@ -51,8 +51,12 @@
                 @endforelse
             </tbody>
         </table>
-        <footer>
-             {{$posts->links()}}
+        <footer class=" ">
+             <div class="container">
+                 <div class="row justify-content-center mt-5 shadow-lg">
+                    {{$posts->links()}}
+                 </div>
+             </div>
         </footer>
     </div>
 @endsection
