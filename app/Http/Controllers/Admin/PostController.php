@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Tag;
+use App\User;
 use App\Models\Category;
 use Illuminate\View\ViewServiceProvider;
 
@@ -25,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::paginate(5);
+        $posts= Post::where('id', Auth::user()->id)->paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
 

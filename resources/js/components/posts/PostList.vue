@@ -12,6 +12,13 @@
         </div>
          <PostCard v-else v-for="post in posts" :key="post.id"  :post='post'/>
        
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagination-lg">
+                <li v-if="currentPage > 1" class="page-item"><button class="page-link" @click='getPostList(currentPage - 1)' >Precedente</button></li>
+                <li v-for="n in lastPage" :key='n' class="page-item" :class="{active : n === currentPage}"><button  class="page-link" @click="getPostList(n)">{{n}}</button></li>
+                <li v-if="currentPage < lastPage" class="page-item"><button class="page-link" @click='getPostList(currentPage + 1)' >Successivo</button></li>
+            </ul>
+        </nav>
     </section>
 </template>
 
@@ -27,17 +34,22 @@ export default {
         return{
             posts: [],
             baseUri: 'http://127.0.0.1:8000',
-            isLoading : false
+            isLoading : false,
+            currentPage: null,
+            lastPage: null,
         }
     },
     
     methods:{
-        getPostList(){
+        getPostList(page){
+
             this.isLoading=true;
-           axios.get(`${this.baseUri}/api/posts`)
+           axios.get(`${this.baseUri}/api/posts/?page=${page}`)
            .then((res)=>{
              
-               this.posts=res.data.posts;
+               this.posts=res.data.data;
+               this.currentPage = res.data.current_page;
+               this.lastPage = res.data.last_page;
                
            })
            .catch((err)=>{
@@ -49,7 +61,7 @@ export default {
         }
     },
     created(){
-        this.getPostList();
+        this.getPostList(1);
     },
 
 }

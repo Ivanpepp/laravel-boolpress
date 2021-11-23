@@ -16,10 +16,10 @@ class PostController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $data = Post::paginate(10);
 
 
-        return response()->json(compact('posts'));
+        return response()->json($data);
     }
 
     /**
