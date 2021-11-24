@@ -6,7 +6,7 @@
             <header><h1>Modifica il post</h1></header>
         </div>
         <section id="post-form">
-            <form action="{{route('admin.posts.update', $post)}}" method="POST">
+            <form action="{{route('admin.posts.update', $post)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="form-group">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <label for="url">Url</label>
-                    <textarea class="form-control" type="text" placeholder="Inserisci l'Url" id="url" name="url"  >{{$post->url}}</textarea>
+                    <input class="form-control" type="file"  id="url" name="url" value="{{$post->url}}" >
                 </div>
                 <button class="btn btn-primary" type="submit">Crea</button>
             </form>

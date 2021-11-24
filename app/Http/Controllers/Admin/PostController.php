@@ -75,7 +75,7 @@ class PostController extends Controller
         $data = request()->all();
         $data['date']=Carbon::now();
 
-        $data['url'] = Storage::put('public',$data['url']);
+        $data['url'] = Storage::put('posts/images',$data['url']);
 
         $post= new Post();
 
@@ -147,6 +147,9 @@ class PostController extends Controller
         $data = request()->all();
         $data['date']=Carbon::now();
        
+        $data['url'] = Storage::put('posts/images',$data['url']);
+
+
         $post->fill($data);
         $post->slug = Str::slug($post->title,'-');
 
