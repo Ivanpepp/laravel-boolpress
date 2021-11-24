@@ -80,6 +80,7 @@
                 </div>
             @endif
         </div>
+        <a href="{{route('guests.contanct')}}" class="m-3 btn btn-danger">CONTATTACI</a>
         <div id="root">
                
         </div>

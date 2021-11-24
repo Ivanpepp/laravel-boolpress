@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="card mb-3">
-            <img src="{{asset('storage') . '/' . $post->url}}" class="card-img-top" alt="{{$post->title}}" height="300px">
+            <img src="{{$post->getImageUrl() . $post->url}}" class="card-img-top" alt="{{$post->title}}" height="300px">
             <div class="card-body">
                 <h2 class="card-title">{{$post->title}}</h2>
                 <p class="card-text">{{$post->content}}</p>
