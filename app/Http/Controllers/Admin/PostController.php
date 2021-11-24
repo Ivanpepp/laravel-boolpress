@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Storage; 
 use App\User;
 use App\Models\Category;
 use Illuminate\View\ViewServiceProvider;
@@ -27,7 +28,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::where('id', Auth::user()->id)->paginate(5);
+        $posts= Post::paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -73,6 +74,8 @@ class PostController extends Controller
 
         $data = request()->all();
         $data['date']=Carbon::now();
+
+        $data['url'] = Storage::put('public',$data['url']);
 
         $post= new Post();
 

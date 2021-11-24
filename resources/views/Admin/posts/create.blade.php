@@ -16,7 +16,7 @@
                 </div> 
             @endif
             
-            <form action="{{route('admin.posts.store')}}" method="POST">
+            <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Titolo</label>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="url">Url</label>
-                    <textarea class="form-control" type="text" placeholder="Inserisci l'Url" id="url" name="url" >{{old('url',$post->url)}}</textarea>
+                    <input class="form-control" type="file"  id="url" name="url" value="{{old('url',$post->url)}}">
                 </div>
                 
                 <button class="btn btn-primary" type="submit">Crea</button>
