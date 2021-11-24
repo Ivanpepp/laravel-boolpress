@@ -63,12 +63,14 @@ class PostController extends Controller
             'url' => 'required|min:10',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
+            'url' => 'image'
         ],
         [
             'required'=>'Devi compilare correttaemnte :attribute',
             'title.required' => 'non è possibile inserire un post senza titolo',
             'author.max' => 'non è possibile inserire un autore con più di 160 caratteri',
             'content.min' => 'il post deve essere lungo almeno 10 caratteri',
+            'url.min' => 'il post deve essere lungo almeno 10 caratteri',
         ]
     );
 
@@ -134,6 +136,7 @@ class PostController extends Controller
             'url' => 'required|min:10',
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'nullable|exists:tags,id',
+            'url' => 'image',
         ],
         [
             'required'=>'Devi compilare correttaemnte :attribute',
